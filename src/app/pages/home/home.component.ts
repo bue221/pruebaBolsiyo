@@ -44,11 +44,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch({
-      type: '[HOME PAGE] LOAD IMAGES',
-      q: 'paisajes',
-      c: '',
-    });
+    // this.store.dispatch({
+    //   type: '[HOME PAGE] LOAD IMAGES',
+    //   q: 'paisajes',
+    //   c: '',
+    // });
     // console.log(this.imagenes$.subscribe((data) => console.log(data)));
   }
 
