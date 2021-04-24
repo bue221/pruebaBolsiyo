@@ -1,1 +1,59 @@
-<p>home works!</p>
+<div class="main">
+  <div class="px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto flex flex-col h-full">
+    <!-- title -->
+    <h1 class="text-center pt-6 text-xl items-center flex justify-center">
+      <span class="material-icons-outlined"> image </span>IMAGES SEARCH WITH
+      ANGULAR
+    </h1>
+    <!-- searh-input -->
+    <div class="box pt-6">
+      <div class="box-wrapper">
+        <form [formGroup]="form" (submit)="searchImage()">
+          <div
+            class="bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200 m-2"
+          >
+            <button
+              class="flex items-center outline-none focus:outline-none mr-2"
+            >
+              <i class="text-grey-600 material-icons-outlined">search</i>
+            </button>
+            <input
+              type="text"
+              id="query"
+              name="query"
+              formControlName="query"
+              class="w-full text-sm rounded"
+            />
+            <div class="select">
+              <select
+                name="category"
+                id="category"
+                formControlName="category"
+                class="text-sm outline-none focus:outline-none bg-transparent rounded"
+              >
+                <option [value]="i" *ngFor="let i of states">{{ i }}</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- images -->
+    <div
+      class="container flex justify-center gap-3 flex-grow flex-wrap"
+      *ngIf="imagenes$"
+    >
+      <div *ngFor="let img of imagenes$ | async">
+        <a [routerLink]="['/img-detail/', img.id]">
+          <img
+            class="w-64 h-64 hover:opacity-75 rounded shadow-xl"
+            [src]="img.largeImageURL"
+            [alt]="img.id"
+          />
+        </a>
+      </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+  </div>
+</div>

@@ -13,8 +13,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getImage(q: string, c: string): Observable<responseGet> {
+  getImage(q: any, c: any, action?: any): Observable<responseGet> {
     let url = this.baseUrl + `&lang=es&q=${q}&category=${c}`;
+    // console.log(action);
     return this.http.get<responseGet>(url);
   }
 }

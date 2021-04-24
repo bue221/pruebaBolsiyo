@@ -1,0 +1,52 @@
+<div class="main p-16">
+  <div class="flex items-center">
+    <button class="bg-transparent" (click)="backClicked()">
+      <span class="material-icons-outlined"> arrow_back </span>
+    </button>
+    <h1 class="flex items-center px-16 py-5">
+      <span class="material-icons-outlined"> image </span>IMAGE DETAIL
+    </h1>
+  </div>
+  <h1 class="text-center px-16 py-5 h-3/4" *ngIf="!imageFilter[0].likes">
+    NO IMAGE DATA
+  </h1>
+  <div
+    class="px-4 sm:px-8 lg:px-16 xl:px-20 mx-auto flex items-center lg:justify-between h-full flex-col lg:flex-row"
+    *ngIf="imageFilter.length > 0"
+  >
+    <img
+      [src]="imageFilter[0].largeImageURL"
+      alt="img-preview"
+      width="70%"
+      class="shadow-4xl w-full lg:w-3/4"
+    />
+    <div class="flex flex-col justify-center text-center items-center">
+      <h1><strong>Likes:</strong> {{ imageFilter[0].likes }}</h1>
+      <h1><strong>views:</strong> {{ imageFilter[0].views }}</h1>
+      <h1><strong>downloads:</strong> {{ imageFilter[0].downloads }}</h1>
+      <div class="flex items-center py-16">
+        <h1 class="flex items-center"><strong>TAGS:</strong></h1>
+        <span
+          *ngFor="let i of imageFilter[0].tags.split(',')"
+          class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer"
+          >{{ i }}</span
+        >
+      </div>
+      <div class="p-2 md:w-40 item-end">
+        <a [href]="imageFilter[0].pageURL" target="_new">
+          <div
+            class="flex items-center p-2 bg-green-200 rounded-lg shadow-xs cursor-pointer hover:bg-green-500 hover:text-gray-100"
+          >
+            <span class="material-icons-outlined">local_parking </span>
+            <div>
+              <p class="text-xs font-medium ml-2">GO TO PIXABAY</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="">
+  <app-footer></app-footer>
+</div>

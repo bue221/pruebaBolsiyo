@@ -1,3 +1,5 @@
+import { Loadable, createDefaultLoadable } from './apiconsume.interface';
+
 export interface Image {
   id: number;
   pageURL: string;
@@ -27,4 +29,15 @@ export interface responseGet {
   total: number;
   totalHits: number;
   hits: Image[];
+}
+
+export interface Images extends Loadable {
+  images: Image[];
+}
+
+export function createDefaultImages(): Images {
+  return {
+    ...createDefaultLoadable(),
+    images: [],
+  };
 }
